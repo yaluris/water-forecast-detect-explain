@@ -8,7 +8,7 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error
 import numpy as np
 
 # 1. Load and clean data
-df = pd.read_excel('data2.xlsx', sheet_name='DATA2024')
+df = pd.read_excel('data/data_filippoi_2024.xlsx', sheet_name='DATA2024')
 df.columns = ['datetime', 'flow', 'flow_calibration', 'total_flow', 'hourly_flow', 'daily_flow', 'monthly_flow']
 df['datetime'] = pd.to_datetime(df['datetime'].astype(str), errors='coerce')
 df.set_index('datetime', inplace=True)
@@ -27,9 +27,9 @@ plt.grid(True)
 plt.tight_layout()
 plt.show()
 
-# 2. Train-test split (last 2 days = test)
-train = df.iloc[:-24*2]
-test = df.iloc[-24*2:]
+# 2. Train-test split (last 7 days = test)
+train = df.iloc[:-24*7]
+test = df.iloc[-24*7:]
 
 # 3. Holt-Winters (ETS)
 # Additive trend, additive seasonality (seasonal fluctuations are constant in magnitude), daily seasonality (24 hours cycle)

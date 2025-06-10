@@ -8,7 +8,7 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error
 import numpy as np
 
 # 1. Load and clean data
-df = pd.read_excel('C:/Users/georg/Desktop/Thesis/data_filippoi_2023.xlsx', sheet_name='DATA2023')
+df = pd.read_excel('data/data_filippoi_2023.xlsx', sheet_name='DATA2023')
 df.columns = ['date', 'time', 'flow1', 'total_flow', 'hourly_flow', 'daily_flow', 'monthly_flow']
 # Combine 'date' and 'time' into a single datetime column
 df['datetime'] = pd.to_datetime(df['date'].astype(str) + ' ' + df['time'].astype(str), errors='coerce')
